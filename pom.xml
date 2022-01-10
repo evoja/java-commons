@@ -9,10 +9,11 @@
 
 	<groupId>net.evoja.commons</groupId>
 	<artifactId>commons</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>checkerframework-run-pom</module>
 		<module>checkerframework-stubs-nullness</module>
 		<module>checkerframework-stubs-purity</module>
 		<module>checkerframework-stubs-units</module>
@@ -24,7 +25,6 @@
 
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<checkerframework.version>3.21.0</checkerframework.version>
@@ -68,35 +68,17 @@
 	</dependencies>
 
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>${evj.commons.group}</groupId>
-				<artifactId>checkerframework-stubs-nullness</artifactId>
-				<version>0.0.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>${evj.commons.group}</groupId>
-				<artifactId>checkerframework-stubs-purity</artifactId>
-				<version>0.0.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>${evj.commons.group}</groupId>
-				<artifactId>checkerframework-stubs-units</artifactId>
-				<version>0.0.0</version>
-				<scope>provided</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
+				<version>3.8.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

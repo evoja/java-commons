@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.evoja.commons</groupId>
+		<artifactId>commons</artifactId>
+		<version>0.0.5</version>
+	</parent>
+
+	<artifactId>checkerframework-run-pom</artifactId>
+	<version>0.0.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/evoja/java-commons</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.checkerframework</groupId>
+			<artifactId>checker-qual</artifactId>
+			<version>${checkerframework.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-nullness</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-purity</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-units</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-units</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>unpack</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<includeGroupIds>${evj.commons.group}</includeGroupIds>
+								<outputDirectory>${project.build.directory}</outputDirectory>
+								<includes>checkerframework-stubs/*.astub</includes>
+								<overWriteIfNewer>true</overWriteIfNewer>
+								<overWriteReleases>true</overWriteReleases>
+								<overWriteSnapshots>true</overWriteSnapshots>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.checkerframework</groupId>
+								<artifactId>checker</artifactId>
+								<version>${checkerframework.version}</version>
+							</path>
+						</annotationProcessorPaths>
+						<annotationProcessors>
+							<annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+							<annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
+							<annotationProcessor>org.checkerframework.checker.tainting.TaintingChecker</annotationProcessor>
+							<annotationProcessor>org.checkerframework.checker.units.UnitsChecker</annotationProcessor>
+						</annotationProcessors>
+						<compilerArguments>
+							<Astubs>${project.build.directory}/classes/checkerframework-stubs/:${project.build.directory}/checkerframework-stubs/</Astubs>
+							<AstubWarnIfNotFound/>
+							<AstubWarnIfNotFoundIgnoresClasses/>
+							<AstubWarnIfRedundantWithBytecode/>
+							<AstubWarnNote/>
+							<AstubDebug/>
+							<AconcurrentSemantics/>
+							<AinvariantArrays/>
+						</compilerArguments>
+						<fork>true</fork>
+						<compilerArgs combine.children="append">
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+							<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+							<arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>purity-strict</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<configuration>
+								<annotationProcessors combine.children="append">
+									<annotationProcessor>org.checkerframework.checker.lock.LockChecker</annotationProcessor>
+									<annotationProcessor>org.checkerframework.framework.util.PurityChecker</annotationProcessor>
+								</annotationProcessors>
+								<compilerArguments combine.children="append">
+									<AsuggestPureMethods/>
+									<AassumeSideEffectFree/>
+									<AcheckPurityAnnotations/>
+								</compilerArguments>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+</project>
