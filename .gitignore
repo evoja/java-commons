@@ -1,0 +1,9 @@
+/java/.editorconfig
+/*/target
+/ignore
+
+node_modules
+.gh-tokens
+
+*.iml
+.idea

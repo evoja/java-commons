@@ -1,0 +1,40 @@
+version: 2
+
+# registries:
+#  github-mvn:
+#    type: maven-repository
+#    url: https://maven.pkg.github.com/evoja/java-commons
+#    username: patuser
+#    password: ${{secrets.DEPS_GHPKG_R_PAT}}
+
+updates:
+
+  - package-ecosystem: maven
+    directory: /
+    target-branch: deps/mvn-maj
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: '**'
+        update-types:
+          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
+
+  - package-ecosystem: maven
+    directory: /
+    target-branch: deps/mvn-min
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    ignore:
+      - dependency-name: '**'
+        update-types:
+          - 'version-update:semver-major'
+
+  - package-ecosystem: npm
+    directory: /.github/evj-tools
+    target-branch: deps/npm
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3

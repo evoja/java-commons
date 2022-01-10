@@ -1,0 +1,12 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.checker.units.qual.PolyUnit;
+import org.checkerframework.checker.units.qual.Prefix;
+import org.checkerframework.checker.units.qual.s;
+
+
+
+package java.lang;
+
+public final class System {
+	public static @s(Prefix.milli) long currentTimeMillis();
+}

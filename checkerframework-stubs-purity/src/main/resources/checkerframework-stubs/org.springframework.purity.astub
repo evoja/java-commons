@@ -1,0 +1,16 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+package org.springframework.data.mongodb.core.query;
+
+public class Criteria {
+	@SideEffectFree
+	public static Criteria where(String key);
+}
+
+public class Query {
+	@SideEffectFree
+	public static Query query(CriteriaDefinition criteriaDefinition);
+}

@@ -1,0 +1,13 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+package org.apache.commons.lang3;
+
+public class StringUtils {
+	@Pure
+	public static boolean equals(CharSequence cs1, CharSequence cs2);
+	@SideEffectFree
+	public static String replace(String text, String searchString, String replacement);
+}

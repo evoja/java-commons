@@ -1,0 +1,12 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+
+package org.apache.http.client.utils;
+
+public class URLEncodedUtils {
+	@SideEffectFree
+	public static List<NameValuePair> parse(URI uri, Charset charset);
+}

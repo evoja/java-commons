@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.evoja.commons</groupId>
+	<artifactId>commons</artifactId>
+	<version>0.0.4</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>checkerframework-stubs-nullness</module>
+		<module>checkerframework-stubs-purity</module>
+		<module>checkerframework-stubs-units</module>
+		<module>checkerframework-units</module>
+	</modules>
+
+	<properties>
+		<evj.commons.group>net.evoja.commons</evj.commons.group>
+
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<checkerframework.version>3.21.0</checkerframework.version>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Evoja Commons</name>
+			<url>https://maven.pkg.github.com/evoja/java-commons</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Evoja Commons</name>
+			<url>https://maven.pkg.github.com/evoja/java-commons</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!--
+			Scopes:
+				compile - build, test and run
+				provided - build and test
+				runtime - test and run
+				test - compile and test
+
+			Transitive:
+			In the table, if a dependency is set to the scope in the left column,
+			transitive dependencies at top row
+			will result in a dependency with the scope listed at their intersection.
+
+				*          compile  provided runtime  test
+				compile    compile  –        runtime  –
+				provided   provided –        provided –
+				runtime    runtime  –        runtime  –
+				test       test     –        test     –
+		-->
+	</dependencies>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-nullness</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-purity</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>${evj.commons.group}</groupId>
+				<artifactId>checkerframework-stubs-units</artifactId>
+				<version>0.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>3.0.0-M1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>3.0.0-M2</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>evj-deploy-this</id>
+			<activation>
+				<file>
+					<exists>${basedir}/.evj-deploy-this.txt</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+</project>

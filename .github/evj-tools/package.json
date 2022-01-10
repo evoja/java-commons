@@ -1,0 +1,9 @@
+{
+	"private": true,
+	"scripts": {
+		"check-editorconfig": "editorconfig-checker -exclude '\\.iml$|/(node_modules|target|.idea|.git)/' ../.."
+	},
+	"devDependencies": {
+		"editorconfig-checker": "4.0.2"
+	}
+}

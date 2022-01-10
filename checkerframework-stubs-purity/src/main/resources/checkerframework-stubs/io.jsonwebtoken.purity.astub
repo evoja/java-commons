@@ -1,0 +1,40 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+
+package io.jsonwebtoken;
+
+public interface JwtParser {
+	@SideEffectFree
+	Jws<Claims> parseClaimsJws(String var1);
+}
+
+public interface Jwt<H extends Header, B> {
+	@Pure // implementation as DefaultJwt has is pure
+	B getBody();
+}
+
+public interface JwtParserBuilder {
+	@SideEffectFree
+	JwtParser build();
+}
+
+public interface JwtBuilder {
+	@SideEffectFree
+	String compact();
+}
+
+public final class Jwts {
+	@SideEffectFree
+	public static JwtParserBuilder parserBuilder();
+}
+
+
+package io.jsonwebtoken.security;
+
+public final class Keys {
+	@SideEffectFree
+	public static SecretKey hmacShaKeyFor(byte[] bytes);
+}

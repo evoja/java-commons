@@ -1,0 +1,17 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+package com.fasterxml.jackson.databind;
+
+public class ObjectMapper {
+	@SideEffectFree
+	public String writeValueAsString(Object value) throws JsonProcessingException;
+	@SideEffectFree
+	public <T> T convertValue(Object fromValue, Class<T> toValueType);
+	@SideEffectFree
+	public <T> T convertValue(Object fromValue, TypeReference<T> toValueTypeRef);
+	@SideEffectFree
+	public <T> T readValue(String content, Class<T> valueType);
+}

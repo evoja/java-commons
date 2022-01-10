@@ -1,0 +1,98 @@
+import org.checkerframework.checker.interning.qual.*;
+import org.checkerframework.dataflow.qual.Deterministic;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
+
+
+
+package java.lang;
+
+public final class System {
+	@SideEffectFree
+	public static long currentTimeMillis();
+}
+
+
+package java.security;
+
+public abstract class MessageDigest {
+	@SideEffectFree
+	public static MessageDigest getInstance(String algorithm);
+}
+
+
+package java.time;
+
+public final class Instant {
+	@Pure
+	public boolean isBefore(Instant otherInstant);
+	@Pure
+	public boolean isAfter(Instant otherInstant);
+	@Pure
+	public int compareTo(Instant otherInstant);
+	@Pure
+	public long getEpochSecond();
+
+	@SideEffectFree
+	public static Instant now();
+	@SideEffectFree
+	public Instant plusMillis(long millisToAdd);
+	@SideEffectFree
+	public Instant plusSeconds(long secondsToAdd);
+}
+
+
+package java.util;
+
+public class Base64 {
+	@Pure // returns Decoder.RFC4648;
+	public static Decoder getDecoder();
+
+	@Pure // returns Decoder.RFC4648_URLSAFE;
+	public static Decoder getUrlDecoder();
+
+	@Pure // returns Encoder.RFC4648;
+	public static Encoder getEncoder();
+
+	@Pure // returns Encoder.RFC4648_URLSAFE;
+	public static Encoder getUrlEncoder();
+
+
+	public static class Decoder {
+		@SideEffectFree
+		public byte[] decode(String src);
+	}
+
+	public static class Encoder {
+		@SideEffectFree
+		public Encoder withoutPadding();
+		@SideEffectFree
+		public String encodeToString(byte[] src);
+	}
+}
+
+public interface Map<K, V> {
+	@SideEffectFree
+	static <K, V> Map<K, V> of(K k1, V v1);
+}
+
+public final class UUID {
+	@SideEffectFree
+	public static UUID randomUUID();
+	@SideEffectFree
+	public static UUID fromString(String name);
+
+	@Pure // returns final long leastSigBits;
+	public long getLeastSignificantBits();
+
+	@Pure // returns final long mostSigBits;
+	public long getMostSignificantBits();
+}
+
+
+package java.util.regex;
+
+public final class Pattern {
+	@SideEffectFree
+	public Matcher matcher(CharSequence input);
+}
