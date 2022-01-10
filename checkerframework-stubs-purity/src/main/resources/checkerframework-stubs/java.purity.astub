@@ -13,34 +13,6 @@ public final class System {
 }
 
 
-package java.security;
-
-public abstract class MessageDigest {
-	@SideEffectFree
-	public static MessageDigest getInstance(String algorithm);
-}
-
-
-package java.time;
-
-public final class Instant {
-	@Pure
-	public boolean isBefore(Instant otherInstant);
-	@Pure
-	public boolean isAfter(Instant otherInstant);
-	@Pure
-	public int compareTo(Instant otherInstant);
-	@Pure
-	public long getEpochSecond();
-
-	@SideEffectFree
-	public static Instant now();
-	@SideEffectFree
-	public Instant plusMillis(long millisToAdd);
-	@SideEffectFree
-	public Instant plusSeconds(long secondsToAdd);
-}
-
 
 package java.util;
 
@@ -69,30 +41,4 @@ public class Base64 {
 		@SideEffectFree
 		public String encodeToString(byte[] src);
 	}
-}
-
-public interface Map<K, V> {
-	@SideEffectFree
-	static <K, V> Map<K, V> of(K k1, V v1);
-}
-
-public final class UUID {
-	@SideEffectFree
-	public static UUID randomUUID();
-	@SideEffectFree
-	public static UUID fromString(String name);
-
-	@Pure // returns final long leastSigBits;
-	public long getLeastSignificantBits();
-
-	@Pure // returns final long mostSigBits;
-	public long getMostSignificantBits();
-}
-
-
-package java.util.regex;
-
-public final class Pattern {
-	@SideEffectFree
-	public Matcher matcher(CharSequence input);
 }
