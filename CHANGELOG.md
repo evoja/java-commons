@@ -13,8 +13,8 @@
 
 ## v0.0
 
-#### [Unreleased][unreleased]
-<!--- ### [0.0.4] - [2022-01-10][c-0.0.4] --->
+<!--- ### [0.0.5] - [2022-01-10][c-0.0.5] --->
+### [0.0.4] - [2022-01-10]c-0.0.4
 The top parent of the library that includes distribution settings and group id.
 
 Collection of following sub-modules and their parent:
