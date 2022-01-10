@@ -27,7 +27,7 @@
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<checkerframework.version>3.21.0</checkerframework.version>
+		<checkerframework.version>3.21.1</checkerframework.version>
 	</properties>
 
 	<distributionManagement>
