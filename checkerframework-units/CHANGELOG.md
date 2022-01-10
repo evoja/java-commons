@@ -17,18 +17,9 @@
 
 <!--- ### [0.0.1] - [2022-01-04][c-0.0.1] --->
 
-### [0.0.0] - 2021-12-30
+### [0.0.0] - 2022-01-10
 
-Collection of checkerframework annotations.
-It covers some methods of following classes:
-
-* com.fasterxml.jackson.databind.ObjectMapper
-* io.jsonwebtoken.*
-* java.security.MessageDigest
-* java.time.Instant
-* java.util.Base64
-* java.util.UUID
-* java.util.regex.Pattern
+Provide `@ms` annotation that means milliseconds for the checkerframework.
 
 The parent POM is [commons:0.0.4/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0/4/java/pom.xml)
 
@@ -42,9 +33,9 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0/0...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.0...master
 
-[c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0/0...checkerfamework-units/0.0/1
-[0.0.1]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0/1
+[c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.0...checkerfamework-units/0.0.1
+[0.0.1]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0.1
 
-[0.0.0]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0/0
+[0.0.0]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0.0
