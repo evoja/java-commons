@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - commons/**
+      - checkerframework-run-pom/**
       - checkerframework-stubs-nullness/**
       - checkerframework-stubs-purity/**
       - checkerframework-stubs-units/**
