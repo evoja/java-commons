@@ -28,15 +28,12 @@ jobs:
             sed -E 's|^refs/tags/([^/]*)/.*|\1|')
           if [ $PROJ == 'commons' ]; then
             PROJ_PATH=.
-            PROJ_ARG='-pl .'
           else
             PROJ_PATH="$PROJ"
-            PROJ_ARG="-pl $PROJ"
           fi;
           echo "PROJ_PATH=$PROJ_PATH"
           [ -d $PROJ_PATH ]
           echo "::set-output name=path::$PROJ_PATH"
-          echo "::set-output name=arg::$PROJ_ARG"
 
       - uses: actions/setup-java@v2
         with:
@@ -59,7 +56,6 @@ jobs:
 
     outputs:
       path: ${{steps.proj.outputs.path}}
-      mvnarg: ${{steps.proj.outputs.arg}}
 
 
   ca:
@@ -71,7 +67,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROJ_PATH: ${{needs.attributes.outputs.path}}
-      PROJ_ARG: ${{needs.attributes.outputs.mvnarg}}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -104,7 +99,6 @@ jobs:
 
       - name: Build and deploy
         run: |
-          touch $PROJ_PATH/.evj-deploy-this.txt
           cd $PROJ_PATH
           mvn --batch-mode deploy -P purity-strict -pl .
         env:
