@@ -1,0 +1,35 @@
+name: Check editorconfig
+runs:
+  using: composite
+  steps:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+
+    - name: Show Node and NPM versions
+      shell: bash
+      run: |
+        echo node@$(node --version)
+        echo npm@$(npm --version)
+
+    - name: Install editorconfig checker
+      shell: bash
+      run: |
+        npm install editorconfig-checker@4.0.2
+
+    - name: Check editorconfig
+      shell: bash
+      run: |
+        npx editorconfig-checker -exclude '\.iml$|/(node_modules|target|.idea|.git)/|^package.json$'
+
+    - name: Check for tabs in a middle of a line
+      shell: bash
+      run: |
+        find . -type f \
+            -not -name '*.iml' \
+            -not -name '*.png' \
+            -not -path '**/node_modules/**' \
+            -not -path '**/target/**' \
+            -not -path '**/.idea/**' \
+            -not -path './.git/**' \
+            -exec grep -HnE $'[^/-]\S\t+' {} \; \
+          | grep . && printf '\033[0m' && exit 1 || printf '\033[0m'

@@ -9,8 +9,15 @@ on:
 #  MVN_EVJ_PATH: ~/.m2/repository/net/evoja
 
 jobs:
+  editorconfig-checker-2:
+    name: Check editorconfig 2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/editorconfig-checker
+
   editorconfig-checker:
-    name: Check editorcofnig
+    name: Check editorconfig
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
