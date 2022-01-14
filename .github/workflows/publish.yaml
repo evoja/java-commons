@@ -60,7 +60,7 @@ jobs:
 
   ca:
     needs: attributes
-    uses: evoja/java-commons/.github/workflows/ca.yaml@f5240ae18aeb9ad6fd2db25c60bb79010b6c5b7b # same as @wf/ca/01
+    uses: evoja/java-commons/.github/workflows/ca.yaml@80b4ece6dd8f68cf5f2534c5f3a3759190f31e91 # same as @wf/ca/02
 
   deploy:
     needs: [attributes,ca]

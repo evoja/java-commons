@@ -12,12 +12,20 @@
 --->
 
 
-#### [Unreleased][unreleased]
-##### Changed
-* Stop skipping deployment
 
 
 ## v0.0
+
+### [0.0.6] - [2022-01-14][c-0.0.6]
+##### Changed
+* Stop skipping deployment
+
+##### Removed
+* checkerframework version property
+
+##### Added
+* Jupiter dependency to `dependencyManagement`
+
 
 ### [0.0.5] - [2022-01-10][c-0.0.5]
 ##### Added
@@ -63,9 +71,12 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 
 [The root CHANGELOG](/CHANGELOG.md)
 
-[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0/5...master
+[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0.6...master
 
-[c-0.0.5]: https://github.com/evoja/java-commons/compare/commons/0.0/4...commons/0.0/5
-[0.0.5]: https://github.com/evoja/java-commons/tree/commons/0.0/5
+[c-0.0.6]: https://github.com/evoja/java-commons/compare/commons/0.0.5...commons/0.0.6
+[0.0.6]: https://github.com/evoja/java-commons/tree/commons/0.0.6
 
-[0.0.4]: https://github.com/evoja/java-commons/tree/commons/0.0/4
+[c-0.0.5]: https://github.com/evoja/java-commons/compare/commons/0.0.4...commons/0.0.5
+[0.0.5]: https://github.com/evoja/java-commons/tree/commons/0.0.5
+
+[0.0.4]: https://github.com/evoja/java-commons/tree/commons/0.0.4
