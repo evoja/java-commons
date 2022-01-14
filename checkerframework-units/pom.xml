@@ -8,12 +8,13 @@
 
 	<parent>
 		<groupId>net.evoja.commons</groupId>
-		<artifactId>commons</artifactId>
-		<version>0.0.4</version>
+		<artifactId>checkerframework-run-pom</artifactId>
+		<version>0.0.0-MTD-12</version>
+		<relativePath>../checkerframework-run-pom</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-units</artifactId>
-	<version>0.0.0</version>
+	<version>0.0.0-MTD-12</version>
 
 	<repositories>
 		<repository>
@@ -25,9 +26,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.checkerframework</groupId>
-			<artifactId>checker-qual</artifactId>
-			<version>${checkerframework.version}</version>
-			<scope>provided</scope>
+			<artifactId>checker-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

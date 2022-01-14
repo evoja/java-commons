@@ -61,7 +61,7 @@
 			<dependency>
 				<groupId>${evj.commons.group}</groupId>
 				<artifactId>checkerframework-units</artifactId>
-				<version>0.0.0</version>
+				<version>0.0.0-MTD-12</version>
 				<scope>provided</scope>
 			</dependency>
 
