@@ -43,9 +43,56 @@ jobs:
               -exec grep -HnE $'[^/-]\S\t+' {} \; \
             | grep . && printf '\033[0m' && exit 1 || printf '\033[0m'
 
+  checkingstamps:
+    name: Checking stamps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Calc hash of java project files
+        id: javahash
+        run: |
+          echo "::set-output name=javahash::${{ hashFiles('*/src/**', '**/pom.xml', 'pom.xml') }}"
+
+      - name: Use cache
+        id: cache
+        uses: actions/cache@v2
+        with:
+          # add `run_attempt` in order to never use cached key
+          key: checkingstamps-check-${{github.run_id}}-${{github.run_attempt}}
+          restore-keys: |
+            checkingstamps-all-${{steps.javahash.outputs.javahash}}
+            checkingstamps-all-
+            checkingstamps-one-
+          path: |
+            ~/evj-checkingstamps
+
+      - name: Check stamps
+        id: checkstamps
+        run: |
+          if [ -f ~/evj-checkingstamps/all-${{steps.javahash.outputs.javahash}}.txt ]; then
+            echo "::set-output name=checked::1"
+          fi;
+    outputs:
+      checked: ${{steps.checkstamps.outputs.checked}}
+      javahash: ${{steps.javahash.outputs.javahash}}
+
+  report-checked-before:
+    needs: [checkingstamps]
+    name: Report that Java build is skipped
+    if: ${{needs.checkingstamps.outputs.checked == 1}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        run: |
+          echo "Java build is skipped because the same source was checked before."
+
 
   build-java:
     name: Build and test java project
+    needs: [checkingstamps]
+    if: ${{needs.checkingstamps.outputs.checked != 1}}
     runs-on: ubuntu-latest
     env:
       IMAGE_PUSH: >-
@@ -60,6 +107,17 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Use cache
+        id: cache-checkingstamps
+        uses: actions/cache@v2
+        with:
+          key: checkingstamps-all-${{needs.checkingstamps.outputs.javahash}}
+          restore-keys: |
+            checkingstamps-all-
+            checkingstamps-one-
+          path: |
+            ~/evj-checkingstamps
 
       - name: Use cache
         id: cache
@@ -90,6 +148,11 @@ jobs:
       - name: Print test reports
         run: |
           find . -type d  -name surefire-reports -exec sh -c "echo "==============================================================================="  && echo {} && cat {}/*.txt" \;
+
+      - name: Write success stamps
+        run: |
+          mkdir -p ~/evj-checkingstamps
+          touch ~/evj-checkingstamps/all-${{needs.checkingstamps.outputs.javahash}}.txt
 
       - name: Delete our jars before caching maven dependencies
         run: |
