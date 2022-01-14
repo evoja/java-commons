@@ -9,12 +9,12 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>checkerframework-run-pom</artifactId>
-		<version>0.0.0-MTD-12</version>
+		<version>0.0.1</version>
 		<relativePath>../checkerframework-run-pom</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-units</artifactId>
-	<version>0.0.0-MTD-12</version>
+	<version>0.0.1</version>
 
 	<repositories>
 		<repository>

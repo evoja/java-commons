@@ -14,13 +14,13 @@
 
 ## v0.0
 
-<!---### [0.0.1] - [2022-01-14][c-0.0.1]--->
-#### [Unreleased][unreleased]
+### [0.0.1] - [2022-01-15][c-0.0.1]
 ##### Added
 * checkerframework version property
 
 ##### Changed
 * The parent POM to [commons:0.0.6/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.6/pom.xml)
+* Bump [checkerframework-units](checkerframework-units/) from 0.0.0 to 0.0.1
 
 
 #### [Unreleased][unreleased]
@@ -39,7 +39,7 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-run-pom/0.0.0...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-run-pom/0.0.1...master
 
 [c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerfamework-run-pom/0.0.0...checkerfamework-stubs-nullness/0.0.1
 [0.0.1]: https://github.com/evoja/java-commons/tree/checkerfamework-run-pom/0.0.1
