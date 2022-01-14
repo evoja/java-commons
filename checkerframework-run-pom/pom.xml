@@ -10,14 +10,15 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.5</version>
+		<version>0.0.6</version>
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.0</version>
+	<version>0.0.0-MTD-12</version>
 	<packaging>pom</packaging>
 
 	<properties>
+		<checkerframework.version>3.21.0</checkerframework.version>
 	</properties>
 
 	<repositories>
@@ -63,6 +64,14 @@
 				<version>0.0.0</version>
 				<scope>provided</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.checkerframework</groupId>
+				<artifactId>checker-util</artifactId>
+				<version>${checkerframework.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
