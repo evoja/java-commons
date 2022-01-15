@@ -10,6 +10,24 @@ on:
       - checkerframework-units/**
 
 jobs:
+
+  attributes:
+    name: Check module name and version
+    uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@17a232a34055c6bbe9a62d698d55ef931126e7d8 # same as @wf/mvn-attributes/00
+
+  editorconfig-checker:
+    name: ec
+    needs: attributes
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@13541445ad45110480842df586da06b72d13b15f # same as @wf/editorconfig-checker/00
+
+  ca-java:
+    name: caj
+    needs: attributes
+    uses: evoja/java-commons/.github/workflows/ca-java.yaml@93521b41fb356a7cdd7aeb16bf7eaf0222edfa1a # same as @wf/ca-java/00
+
   deploy-java:
     name: dj
-    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@d7b1d283bae55115f2462177193ace1d5d18a54b # same as @wf/deploy-java/00
+    needs: [attributes, editorconfig-checker, ca-java]
+    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@17a232a34055c6bbe9a62d698d55ef931126e7d8 # same as @wf/deploy-java/00
+    with:
+      path_to_module: ${{needs.attributes.outputs.path}}

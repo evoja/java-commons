@@ -3,23 +3,6 @@ on:
   push:
     branches:
       - '**'
-  workflow_call:
-    inputs:
-      path_to_java:
-        description: A path where the java project is located
-        default: '.'
-        type: string
-      path_to_mvn_settings:
-        description: A path to maven settings.xml
-        default: .github/workflows/mvn-settings.xml
-        type: string
-      path_to_mvn_output:
-        description: A path where the java packages are installed
-        default: ~/.m2/repository/net/evoja
-        type: string
-    secrets:
-      GHCR_R_PAT:
-        description: A token that can read from GitHub packages
 
 jobs:
 
@@ -30,9 +13,3 @@ jobs:
   ca-java:
     name: caj
     uses: evoja/java-commons/.github/workflows/ca-java.yaml@93521b41fb356a7cdd7aeb16bf7eaf0222edfa1a # same as @wf/ca-java/00
-    with:
-      path_to_java: ${{inputs.path_to_java}}
-      path_to_mvn_settings: ${{inputs.path_to_mvn_settings}}
-      path_to_mvn_output: ${{inputs.path_to_mvn_output}}
-    secrets:
-      GHCR_R_PAT: ${{secrets.GHCR_R_PAT}}
