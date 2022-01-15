@@ -1,8 +1,5 @@
 name: Check that Java project is buildable
 on:
-  push:
-    branches:
-      - '**'
   workflow_call:
     inputs:
       path_to_java:
