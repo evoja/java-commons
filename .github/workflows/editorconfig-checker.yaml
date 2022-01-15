@@ -1,8 +1,5 @@
 name: Check editorconfig
 on:
-  push:
-    branches:
-      - '**'
   workflow_call:
     inputs:
       checker_version:

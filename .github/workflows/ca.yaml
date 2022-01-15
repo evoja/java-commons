@@ -11,38 +11,8 @@ on:
 jobs:
 
   editorconfig-checker:
-    name: Check editorconfig
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-
-      - name: Show Node and NPM versions
-        run: |
-          echo node@$(node --version)
-          echo npm@$(npm --version)
-
-      - name: Install NPM dependencies
-        run: |
-          cd .github/evj-tools
-          npm ci
-
-      - name: Check editorconfig
-        run: |
-          cd .github/evj-tools
-          npm run check-editorconfig
-
-      - name: Check for tabs in a middle of a line
-        run: |
-          find . -type f \
-              -not -name '*.iml' \
-              -not -name '*.png' \
-              -not -path '**/node_modules/**' \
-              -not -path '**/target/**' \
-              -not -path '**/.idea/**' \
-              -not -path './.git/**' \
-              -exec grep -HnE $'[^/-]\S\t+' {} \; \
-            | grep . && printf '\033[0m' && exit 1 || printf '\033[0m'
+    name: EC
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@13541445ad45110480842df586da06b72d13b15f # same as @wf/editorconfig-checker/00
 
   checkingstamps:
     name: Checking stamps
