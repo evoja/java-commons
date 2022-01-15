@@ -1,16 +1,32 @@
 name: Deploy to registry
 on:
-  push:
-    tags:
-      - commons/**
-      - checkerframework-run-pom/**
-      - checkerframework-stubs-nullness/**
-      - checkerframework-stubs-purity/**
-      - checkerframework-stubs-units/**
-      - checkerframework-units/**
+  workflow_call:
+    inputs:
+      path_to_java:
+        description: A path where the java project is located
+        default: '.'
+        type: string
+      root_proj_name:
+        description: name of the root project that is located in `path_to_java`
+        default: commons
+        type: string
+      path_to_mvn_settings:
+        description: A path to maven settings.xml
+        default: .github/workflows/mvn-settings.xml
+        type: string
+      path_to_mvn_output:
+        description: A path where the java packages are installed
+        default: ~/.m2/repository/net/evoja
+        type: string
+    secrets:
+      GHCR_R_PAT:
+        description: A token that can read from GitHub packages
 
-#env:
-#  MVN_EVJ_PATH: ~/.m2/repository/net/evoja
+env:
+  src_tpl: ${{ format('{0}/*/src/**', inputs.path_to_java) }}
+  poms_tpl: ${{ format('{0}/**/pom.xml', inputs.path_to_java) }}
+  pom_tpl: ${{ format('{0}/pom.xml', inputs.path_to_java) }}
+
 
 jobs:
   attributes:
@@ -23,13 +39,12 @@ jobs:
       - name: Verify module
         id: proj
         run: |
-          echo ${{github.repository}}/.github/workflows/ca.yaml@${{github.sha}}
           PROJ=$(echo '${{github.ref}}' | \
             sed -E 's|^refs/tags/([^/]*)/.*|\1|')
-          if [ $PROJ == 'commons' ]; then
-            PROJ_PATH=.
+          if [ $PROJ == ${{inputs.root_proj_name}} ]; then
+            PROJ_PATH=${{inputs.path_to_java}}
           else
-            PROJ_PATH="$PROJ"
+            PROJ_PATH="${{inputs.path_to_java}}/$PROJ"
           fi;
           echo "PROJ_PATH=$PROJ_PATH"
           [ -d $PROJ_PATH ]
@@ -39,6 +54,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Auth to GitHub Maven
+        run: |
+          if [ -f ${{inputs.path_to_mvn_settings}} ]; then
+            cp ${{inputs.path_to_mvn_settings}} ~/.m2/settings.xml
+          fi
 
       - name: Verify version
         run: |
@@ -53,17 +74,29 @@ jobs:
 #          echo "VER=$VER" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
 
     outputs:
       path: ${{steps.proj.outputs.path}}
 
 
-  ca:
-    needs: attributes
-    uses: evoja/java-commons/.github/workflows/ca.yaml@80b4ece6dd8f68cf5f2534c5f3a3759190f31e91 # same as @wf/ca/02
+  editorconfig-checker:
+    name: ec
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@13541445ad45110480842df586da06b72d13b15f # same as @wf/editorconfig-checker/00
+
+  ca-java:
+    name: caj
+    uses: evoja/java-commons/.github/workflows/ca-java.yaml@93521b41fb356a7cdd7aeb16bf7eaf0222edfa1a # same as @wf/ca-java/00
+    with:
+      path_to_java: ${{inputs.path_to_java}}
+      path_to_mvn_settings: ${{inputs.path_to_mvn_settings}}
+      path_to_mvn_output: ${{inputs.path_to_mvn_output}}
+    secrets:
+      GHCR_R_PAT: ${{secrets.GHCR_R_PAT}}
+
 
   deploy:
-    needs: [attributes,ca]
+    needs: [attributes, editorconfig-checker, ca-java]
     runs-on: ubuntu-latest
     env:
       PROJ_PATH: ${{needs.attributes.outputs.path}}
@@ -82,7 +115,8 @@ jobs:
         with:
           key: mvndeps-one-${{hashFiles(format('{0}/pom.xml', env.PROJ_PATH))}}
           restore-keys: |
-            mvndeps-all-${{ hashFiles('**/pom.xml') }}
+            mvndeps-all-${{ hashFiles(env.poms_tpl) }}-${{ hashFiles(env.pom_tpl)}}
+            mvndeps-all-${{ hashFiles(env.poms_tpl) }}
             mvndeps-all-
             mvndeps-one-
             mvndeps-
@@ -97,17 +131,25 @@ jobs:
           printf "\n### Maven\n"
           mvn --version
 
+      - name: Auth to GitHub Maven
+        run: |
+          if [ -f ${{inputs.path_to_mvn_settings}} ]; then
+            cp ${{inputs.path_to_mvn_settings}} ~/.m2/settings.xml
+          fi
+
       - name: Build and deploy
         run: |
           cd $PROJ_PATH
           mvn --batch-mode deploy -P purity-strict -pl .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
 
       - name: Print test reports
         run: |
+          cd $PROJ_PATH
           find . -type d  -name surefire-reports -exec sh -c "echo "==============================================================================="  && echo {} && cat {}/*.txt" \;
 
       - name: Delete our jars before caching maven dependencies
         run: |
-          rm -rf ~/.m2/repository/net/evoja
+          rm -rf ${{inputs.path_to_mvn_output}}
