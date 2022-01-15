@@ -1,0 +1,15 @@
+name: Deploy to registry
+on:
+  push:
+    tags:
+      - commons/**
+      - checkerframework-run-pom/**
+      - checkerframework-stubs-nullness/**
+      - checkerframework-stubs-purity/**
+      - checkerframework-stubs-units/**
+      - checkerframework-units/**
+
+jobs:
+  deploy-java:
+    name: dj
+    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@d7b1d283bae55115f2462177193ace1d5d18a54b # same as @wf/deploy-java/00
