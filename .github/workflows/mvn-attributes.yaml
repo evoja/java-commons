@@ -17,6 +17,9 @@ on:
     secrets:
       GHCR_R_PAT:
         description: A token that can read from GitHub packages
+    outputs:
+      path:
+        value: ${{jobs.attributes.outputs.path}}
 
 
 jobs:
