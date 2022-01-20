@@ -2,6 +2,16 @@ name: Dependaboja
 description: Merge dependabot PRs and sync aggregated branches with master
 
 inputs:
+  merge_type:
+    description: merge/rebase/squah. Default is "rebase"
+    required: false
+    default: rebase
+  committer_name:
+    required: false
+    default: dependaboja
+  committer_email:
+    required: false
+    default: --
   disabled_pr_targets:
     description: Comma separated list of branches wich are not allowed to be a PR target for auto merge. Default is 'master,main'
     required: false
@@ -40,13 +50,29 @@ runs:
       shell: bash
       run: |
         STR="${{inputs.sync_with}}"
-        readarray -d , -t ARR <<< "$STR"
-        for word in "${ARR[@]}"; do
-          echo $word
-          if [ $word == "${{github.ref_name}}" ]; then
+        readarray -d , -t SYNCREFS <<< "$STR"
+        for REF in "${SYNCREFS[@]}"; do
+          echo $REF
+          if [ $REF == "${{github.ref_name}}" ]; then
             echo "::set-output name=shouldsync::1"
           fi
         done
+
+    - name: Calc merge type
+      id: mergetype
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      shell: bash
+      run: |
+        TYPE=${{inputs.merge_type}}
+        if [ $TYPE == 'rebase' ]; then
+          echo "::set-output name=cmd::rebase"
+        elif [ $TYPE == 'merge' ]; then
+          echo "::set-output name=cmd::merge"
+        elif [ $TYPE == 'squash' ]; then
+          echo "::set-output name=cmd::merge --squash"
+        else
+          exit 1
+        fi
 
     - name: Show YQ version or try to install
       if: ${{steps.shouldsync.outputs.shouldsync == 1}}
@@ -71,12 +97,34 @@ runs:
 
     - name: Read dependabot config
       if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: ${{inputs.fetch_depth}}
+
+
+    - name: Configure git environment
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
       shell: bash
       run: |
+        git config user.name ${{inputs.committer_name}}
+        git config user.email ${{inputs.committer_email}}
+
+    - name: List refs
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      shell: bash
+      run: git branch -a
+
+    - name: Read dependabot config
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      shell: bash
+      run: |
+        CMD=${{steps.mergetype.outputs.cmd}}
         DEPCONF=./.github/dependabot.${{steps.find_dependabot.outputs.ext}}
         TARGETS=($(yq e '.updates[].["target-branch"]' $DEPCONF))
-        for REF in "${TARGETS[@]}"; do
-          echo ALALA $REF
+        for BRANCH in "${TARGETS[@]}"; do
+          git checkout -b $BRANCH
+          git $CMD -X theirs ${{github.ref}}
+          git push --force origin $BRANCH
         done
 
     - name: Report skip branch
