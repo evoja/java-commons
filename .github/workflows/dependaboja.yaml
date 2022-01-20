@@ -3,9 +3,9 @@ name: dependaboja
 on:
   push:
     branches: ['**'] # [testin-dep, master]
-  # pull_request:
-  #   branches: [deps/**]
-  #   types: [opened, synchronize, reopened]
+  pull_request:
+    branches: [deps/**]
+    types: [opened, synchronize, reopened]
 
 permissions:
   pull-requests: write
@@ -21,3 +21,5 @@ jobs:
         uses: ./.github/actions/dependaboja
         with:
           sync_with: DEP-6,master,main
+          disabled_pr_targets: master,main,deps/mvn-min
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
