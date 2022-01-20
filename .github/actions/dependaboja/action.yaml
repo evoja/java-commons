@@ -44,8 +44,11 @@ runs:
         echo this was a pull request!
         echo ${{github.actor}}
         echo ${{github.ref}}
-        echo ${{github.actor == 'dependabot[bot]'}}
-        echo ${{startsWith(github.ref, 'dependabot/')}}
+        echo ${{github.head_ref}}
+        echo actor ${{github.actor == 'dependabot[bot]'}}
+        echo ref ${{startsWith(github.ref, 'dependabot/')}}
+        echo head_ref ${{startsWith(github.head_ref, 'dependabot/')}}
+        echo '${{ toJSON(github) }}'
 
     - name: Shoud merge the PR?
       id: shouldmergepr

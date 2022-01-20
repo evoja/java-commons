@@ -4,6 +4,7 @@ on:
     branches:
       - '**'
       - '!DEP-6'
+      - '!dependabot/**'
 
 jobs:
 
