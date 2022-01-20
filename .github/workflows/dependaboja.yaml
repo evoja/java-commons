@@ -19,4 +19,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Dependaboja
         uses: ./.github/actions/dependaboja
-
+        with:
+          sync_with: DEP-6,master,main
