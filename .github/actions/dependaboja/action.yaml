@@ -48,18 +48,36 @@ runs:
           fi
         done
 
-    - name: Read dependabot config
+    - name: Show YQ version or try to install
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      shell: bash
+      run: |
+        jq --version || echo "no-jq"
+        yq --version || (echo "no-yq" && pip3 install yq)
+
+    - name: Find dependabot config
+      id: find_dependabot
       if: ${{steps.shouldsync.outputs.shouldsync == 1}}
       shell: bash
       run: |
         if [ -f ./.github/dependabot.yaml ]; then
-          cat ./.github/dependabot.yaml
+          echo "::set-output name=ext::yaml"
         elif [ -f ./.github/dependabot.yml ]; then
-          cat ./.github/dependabot.yml
+          echo "::set-output name=ext::yml"
         else
           echo "Cannot find dependabot config"
           exit 1
         fi
+
+    - name: Read dependabot config
+      if: ${{steps.shouldsync.outputs.shouldsync == 1}}
+      shell: bash
+      run: |
+        DEPCONF=./.github/dependabot.${{steps.find_dependabot.outputs.ext}}
+        TARGETS=($(yq e '.updates[].["target-branch"]' $DEPCONF))
+        for REF in "${TARGETS[@]}"; do
+          echo ALALA $REF
+        done
 
     - name: Report skip branch
       if: ${{steps.shouldsync.outputs.shouldsync != 1}}
