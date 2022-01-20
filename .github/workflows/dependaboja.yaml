@@ -25,4 +25,4 @@ jobs:
         with:
           sync_with: DEP-6,master,main
           disabled_pr_targets: master,main,deps/mvn-min
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_TOKEN: ${{secrets.GITHUB_TOKEN}}

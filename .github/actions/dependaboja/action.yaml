@@ -2,7 +2,7 @@ name: Dependaboja
 description: Merge dependabot PRs and sync aggregated branches with master
 
 inputs:
-  GITHUB_TOKEN:
+  PR_TOKEN:
     description: a github token for automerging PRs
     required: true
   merge_type:
@@ -72,7 +72,7 @@ runs:
       run: gh pr merge --auto --rebase "$PR_URL"
       env:
         PR_URL: ${{github.event.pull_request.html_url}}
-        GITHUB_TOKEN: ${{inputs.GITHUB_TOKEN}}
+        GITHUB_TOKEN: ${{inputs.PR_TOKEN}}
 
     - name: Report skip branch
       if: ${{github.event_name == 'pull_request' && steps.shouldmergepr.outputs.shouldmerge != 1}}
@@ -84,7 +84,7 @@ runs:
     - name: Run on push
       if: ${{ github.event_name == 'push' }}
       shell: bash
-      run: echo this was a push! ${{inputs.GITHUB_TOKEN}}
+      run: echo this was a push!
 
     - name: Is it a branch to sync?
       id: shouldsync
