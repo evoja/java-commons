@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - '**'
+      - '!DEP-6'
 
 jobs:
 

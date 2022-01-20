@@ -1,0 +1,22 @@
+name: dependaboja
+
+on:
+  push:
+    branches: ['**'] # [testin-dep, master]
+  # pull_request:
+  #   branches: [deps/**]
+  #   types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Dependaboja
+        uses: ./.github/actions/dependaboja
+

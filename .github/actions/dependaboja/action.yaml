@@ -1,0 +1,30 @@
+name: Dependaboja
+description: Merge dependabot PRs and sync aggregated branches with master
+
+inputs:
+  disabled_pr_targets:
+    description: Comma separated list of branches wich are not allowed to be a PR target for auto merge. Default is 'master,main'
+    required: false
+    default: master,main
+  sync_with:
+    description: Comma separated list of branches which should be merged to agregated dependency branches automatically. Default is 'master,main'
+    required: false
+    default: master,main
+
+outputs: {}
+  # random-number:
+  #   description: "Random number"
+  #   value: ${{ steps.random-number-generator.outputs.random-id }}
+
+runs:
+  using: composite
+  steps:
+    - name: Run on PR
+      if: ${{ github.event_name == 'pull_request' }}
+      shell: bash
+      run: echo this was a pull request!
+
+    - name: Run on push
+      if: ${{ github.event_name == 'push' }}
+      shell: bash
+      run: echo this was a push!
