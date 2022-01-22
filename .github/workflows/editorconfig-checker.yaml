@@ -17,27 +17,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Show Node and NPM versions
-        run: |
-          echo node@$(node --version)
-          echo npm@$(npm --version)
-
-      - name: Use cache
-        uses: actions/cache@v2
-        with:
-          key: editorconfigcheckerdeps-${{inputs.checker_version}}
-          restore-keys: |
-            editorconfigcheckerdeps-
-          path: |
-            node_modules
-
-      - name: Install editorconfig checker
-        run: |
-          npm install editorconfig-checker@${{inputs.checker_version}}
-
       - name: Check editorconfig
-        run: |
-          npx editorconfig-checker -exclude '\.iml$|/(node_modules|target|.idea|.git)/|^package.json$'
+        uses: editorconfig-checker/action-editorconfig-checker@0527b11555ed46afd00df746f35b79cb7f7b68c2 # refs/tags/v1.0.0
 
       - name: Check for tabs in a middle of a line
         run: |
