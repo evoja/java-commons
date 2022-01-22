@@ -13,8 +13,8 @@ updates:
     directory: /
     target-branch: deps/mvn-maj
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
+      interval: daily
+    open-pull-requests-limit: 5
     ignore:
       - dependency-name: '**'
         update-types:
@@ -25,8 +25,8 @@ updates:
     directory: /
     target-branch: deps/mvn-min
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
+      interval: daily
+    open-pull-requests-limit: 5
     ignore:
       - dependency-name: '**'
         update-types:
@@ -36,5 +36,5 @@ updates:
     directory: /.github/evj-tools
     target-branch: deps/npm
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 3
+      interval: daily
+    open-pull-requests-limit: 5
