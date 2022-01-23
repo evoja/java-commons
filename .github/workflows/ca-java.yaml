@@ -18,6 +18,9 @@ on:
       GHCR_R_PAT:
         description: A token that can read from GitHub packages
 
+permissions:
+  packages: none
+
 env:
   src_tpl: ${{ format('{0}/*/src/**', inputs.path_to_java) }}
   poms_tpl: ${{ format('{0}/**/pom.xml', inputs.path_to_java) }}

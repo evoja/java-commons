@@ -6,7 +6,7 @@ on:
       - '!dependabot/**'
 
 permissions:
-  actions: none
+  packages: none
 
 jobs:
 

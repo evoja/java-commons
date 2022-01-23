@@ -9,6 +9,9 @@ on:
       - checkerframework-stubs-units/**
       - checkerframework-units/**
 
+permissions:
+  packages: none
+
 jobs:
 
   attributes:
@@ -31,3 +34,6 @@ jobs:
     uses: evoja/java-commons/.github/workflows/deploy-java.yaml@17a232a34055c6bbe9a62d698d55ef931126e7d8 # same as @wf/deploy-java/00
     with:
       path_to_module: ${{needs.attributes.outputs.path}}
+  permissions:
+    packages: write
+

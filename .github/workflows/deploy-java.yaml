@@ -20,7 +20,10 @@ on:
         type: string
     secrets:
       GHCR_R_PAT:
-        description: A token that can read from GitHub packages
+        description: A token that can read from GitHub packages for downloading private dependencies.
+
+permissions:
+  packages: write
 
 env:
   poms_tpl: ${{ format('{0}/**/pom.xml', inputs.path_to_java) }}
