@@ -17,6 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.0
       - name: Dependaboja
         uses: evoja/dependaboja@c6f93435c74fdc2f52e05d408b074213ba3c4d9b
