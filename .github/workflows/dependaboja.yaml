@@ -19,4 +19,4 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
       - name: Dependaboja
-        uses: evoja/dependaboja@v0
+        uses: evoja/dependaboja@c6f93435c74fdc2f52e05d408b074213ba3c4d9b
