@@ -22,7 +22,7 @@ on:
         value: ${{jobs.attributes.outputs.path}}
 
 permissions:
-  packages: none
+  contents: read
 
 jobs:
   attributes:

@@ -19,7 +19,7 @@ on:
         description: A token that can read from GitHub packages
 
 permissions:
-  packages: none
+  contents: read
 
 env:
   src_tpl: ${{ format('{0}/*/src/**', inputs.path_to_java) }}
@@ -83,6 +83,8 @@ jobs:
     needs: [checkingstamps]
     if: ${{needs.checkingstamps.outputs.checked != 1}}
     runs-on: ubuntu-latest
+    permissions:
+      packages: read
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2.4.0

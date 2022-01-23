@@ -23,6 +23,7 @@ on:
         description: A token that can read from GitHub packages for downloading private dependencies.
 
 permissions:
+  contents: read
   packages: write
 
 env:
