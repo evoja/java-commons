@@ -68,14 +68,16 @@ jobs:
           mvn --version
 
       - name: Auth to GitHub Maven
+        env:
+          MVN_SETTINGS: ${{inputs.path_to_mvn_settings}}
         run: |
-          if [ -f ${{inputs.path_to_mvn_settings}} ]; then
-            cp ${{inputs.path_to_mvn_settings}} ~/.m2/settings.xml
+          if [ -f "$MVN_SETTINGS" ]; then
+            cp "$MVN_SETTINGS" ~/.m2/settings.xml
           fi
 
       - name: Build and deploy
         run: |
-          cd $PROJ_PATH
+          cd "$PROJ_PATH"
           mvn --batch-mode deploy -P purity-strict -pl .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -83,9 +85,11 @@ jobs:
 
       - name: Print test reports
         run: |
-          cd $PROJ_PATH
+          cd "$PROJ_PATH"
           find . -type d  -name surefire-reports -exec sh -c "echo "==============================================================================="  && echo {} && cat {}/*.txt" \;
 
       - name: Delete our jars before caching maven dependencies
+        env:
+          MVN_OUTPUT: ${{inputs.path_to_mvn_output}}
         run: |
-          rm -rf ${{inputs.path_to_mvn_output}}
+          rm -rf "$MVN_OUTPUT"

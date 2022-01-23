@@ -34,16 +34,20 @@ jobs:
 
       - name: Verify module
         id: proj
+        env:
+          REF: ${{github.ref}}
+          ROOT_PROJ_NAME: ${{inputs.root_proj_name}}
+          PATH_TO_JAVA: ${{inputs.path_to_java}}
         run: |
-          PROJ=$(echo '${{github.ref}}' | \
-            sed -E 's|^refs/tags/([^/]*)/.*|\1|')
-          if [ $PROJ == ${{inputs.root_proj_name}} ]; then
-            PROJ_PATH=${{inputs.path_to_java}}
+          PROJ="$(echo "$REF" | \
+            sed -E 's|^refs/tags/([^/]*)/.*|\1|')"
+          if [ "$PROJ" == "$ROOT_PROJ_NAME" ]; then
+            PROJ_PATH="$PATH_TO_JAVA"
           else
-            PROJ_PATH="${{inputs.path_to_java}}/$PROJ"
+            PROJ_PATH="$PATH_TO_JAVA/$PROJ"
           fi;
           echo "PROJ_PATH=$PROJ_PATH"
-          [ -d $PROJ_PATH ]
+          [ -d "$PROJ_PATH" ]
           echo "::set-output name=path::$PROJ_PATH"
 
       - uses: actions/setup-java@v2
@@ -52,25 +56,29 @@ jobs:
           java-version: '17'
 
       - name: Auth to GitHub Maven
+        env:
+          MVN_SETTIGNS: ${{inputs.path_to_mvn_settings}}
         run: |
-          if [ -f ${{inputs.path_to_mvn_settings}} ]; then
-            cp ${{inputs.path_to_mvn_settings}} ~/.m2/settings.xml
+          if [ -f "$MVN_SETTINGS" ]; then
+            cp "$MVN_SETTINGS" ~/.m2/settings.xml
           fi
 
       - name: Verify version
-        run: |
-          cd ${{steps.proj.outputs.path}}
-          VER=$(echo '${{github.ref}}' | \
-            sed -E 's|^refs/tags/[^/]*/(.*)|\1|' | \
-            sed -E 's|/|.|g')
-          echo "VER=$VER"
-          MVN_VER=$(mvn help:evaluate -Dexpression=project.version -pl . --non-recursive -q -DforceStdout)
-          echo "MVN_VER=$MVN_VER"
-          [ $VER == $MVN_VER ]
-        #          echo "VER=$VER" >> $GITHUB_ENV
         env:
+          PROJ_PATH: ${{steps.proj.outputs.path}}
+          REF: ${{github.ref}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
+        run: |
+          cd "$PROJ_PATH"
+          VER="$(echo "$REF" | \
+            sed -E 's|^refs/tags/[^/]*/(.*)|\1|' | \
+            sed -E 's|/|.|g')"
+          echo "VER=$VER"
+          MVN_VER="$(mvn help:evaluate -Dexpression=project.version -pl . --non-recursive -q -DforceStdout)"
+          echo "MVN_VER=$MVN_VER"
+          [ "$VER" == "$MVN_VER" ]
+        #          echo "VER=$VER" >> "$GITHUB_ENV"
 
     outputs:
       path: ${{steps.proj.outputs.path}}

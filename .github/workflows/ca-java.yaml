@@ -37,8 +37,10 @@ jobs:
 
       - name: Calc hash of java project files
         id: javahash
+        env:
+          JAVA_HASH: ${{ hashFiles(env.src_tpl, env.poms_tpl, env.pom_tpl) }}
         run: |
-          echo "::set-output name=javahash::${{ hashFiles(env.src_tpl, env.poms_tpl, env.pom_tpl) }}"
+          echo "::set-output name=javahash::$JAVA_HASH"
 
       - name: Use cache
         id: cache
@@ -55,8 +57,10 @@ jobs:
 
       - name: Check stamps
         id: checkstamps
+        env:
+          JAVA_HASH: ${{steps.javahash.outputs.javahash}}
         run: |
-          if [ -f ~/evj-checkingstamps/all-${{steps.javahash.outputs.javahash}}.txt ]; then
+          if [ -f "~/evj-checkingstamps/all-$JAVA_HASH.txt" ]; then
             echo "::set-output name=checked::1"
           fi;
     outputs:
@@ -121,29 +125,38 @@ jobs:
           mvn --version
 
       - name: Auth to GitHub Maven
+        env:
+          MVN_SETTINGS: ${{inputs.path_to_mvn_settings}}
         run: |
-          if [ -f ${{inputs.path_to_mvn_settings}} ]; then
-            cp ${{inputs.path_to_mvn_settings}} ~/.m2/settings.xml
+          if [ -f "$MVN_SETTINGS" ]; then
+            cp "$MVN_SETTINGS" ~/.m2/settings.xml
           fi
 
       - name: Build all java subprojects
-        run: |
-          cd ${{inputs.path_to_java}}
-          mvn --batch-mode install
         env:
+          PROJ: ${{inputs.path_to_java}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
+        run: |
+          cd "$PROJ"
+          mvn --batch-mode install
 
       - name: Print test reports
+        env:
+          PROJ: ${{inputs.path_to_java}}
         run: |
-          cd ${{inputs.path_to_java}}
+          cd "$PROJ"
           find . -type d  -name surefire-reports -exec sh -c "echo "==============================================================================="  && echo {} && cat {}/*.txt" \;
 
       - name: Write success stamps
+        env:
+          JAVA_HASH: ${{needs.checkingstamps.outputs.javahash}}
         run: |
           mkdir -p ~/evj-checkingstamps
-          touch ~/evj-checkingstamps/all-${{needs.checkingstamps.outputs.javahash}}.txt
+          touch "~/evj-checkingstamps/all-$JAVA_HASH.txt"
 
       - name: Delete our jars before caching maven dependencies
+        env:
+          MVN_OUTPUT: ${{inputs.path_to_mvn_output}}
         run: |
-          rm -rf ${{inputs.path_to_mvn_output}}
+          rm -rf "$MVN_OUTPUT"
