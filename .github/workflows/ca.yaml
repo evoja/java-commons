@@ -5,6 +5,9 @@ on:
       - '**'
       - '!dependabot/**'
 
+permissions:
+  actions: none
+
 jobs:
 
   editorconfig-checker:
