@@ -15,6 +15,13 @@
 
 
 ## v0.0
+#### [Unreleased][unreleased]
+##### Added
+* MIT License
+
+#### Changed
+* Upgrade `maven-compiler-plugin` dependency to `3.9.0`
+
 
 ### [0.0.6] - [2022-01-14][c-0.0.6]
 ##### Changed
