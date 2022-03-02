@@ -18,7 +18,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<checkerframework.version>3.21.2</checkerframework.version>
+		<checkerframework.version>3.21.3</checkerframework.version>
 	</properties>
 
 	<repositories>
