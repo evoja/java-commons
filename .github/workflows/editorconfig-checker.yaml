@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.1
 
       - name: Check editorconfig
         uses: editorconfig-checker/action-editorconfig-checker@0527b11555ed46afd00df746f35b79cb7f7b68c2 # refs/tags/v1.0.0
