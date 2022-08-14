@@ -21,9 +21,6 @@ on:
       path:
         value: ${{jobs.attributes.outputs.path}}
 
-permissions:
-  contents: read
-
 jobs:
   attributes:
     name: Check module name and version
