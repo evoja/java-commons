@@ -28,7 +28,7 @@ which:
 Collection of checkerframework annotations.
 It covers `java.lang.System.currentTimeMillis`
 
-The parent POM is [commons:0.0.4/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.4/java/pom.xml)
+The parent POM is [commons:0.0.4/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.4/pom.xml)
 
 
 
@@ -40,9 +40,9 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-stubs-units/0.0.0...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-stubs-units/0.0.0...master
 
-[c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerfamework-stubs-units/0.0.0...checkerfamework-stubs-units/0.0/1
-[0.0.1]: https://github.com/evoja/java-commons/tree/checkerfamework-stubs-units/0.0.1
+[c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerframework-stubs-units/0.0.0...checkerframework-stubs-units/0.0/1
+[0.0.1]: https://github.com/evoja/java-commons/tree/checkerframework-stubs-units/0.0.1
 
-[0.0.0]: https://github.com/evoja/java-commons/tree/checkerfamework-stubs-units/0.0.0
+[0.0.0]: https://github.com/evoja/java-commons/tree/checkerframework-stubs-units/0.0.0
