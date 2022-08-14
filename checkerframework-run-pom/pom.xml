@@ -10,12 +10,12 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.6-lic-deps</version>
+		<version>0.0.7</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -62,7 +62,7 @@
 			<dependency>
 				<groupId>${evj.commons.group}</groupId>
 				<artifactId>checkerframework-units</artifactId>
-				<version>0.0.1</version>
+				<version>0.0.2</version>
 				<scope>provided</scope>
 			</dependency>
 

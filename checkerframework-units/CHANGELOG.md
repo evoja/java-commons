@@ -17,20 +17,25 @@
 
 ## v0.0
 
+### [0.0.2] - [2022-08-14][c-0.0.2]
+##### Changed
+The parent POM to [checkerframework-run-pom:0.0.2/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.2/checkerframework-run-pom/pom.xml),
+which supports dependencies license checking and reporting.
+
 
 ### [0.0.1] - [2022-01-15][c-0.0.1]
 ##### Added
 A unit test
 
 ##### Changed
-The parent POM to [checkerframework-run-pom:0.0.1/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.1/java/pom.xml)
+The parent POM to [checkerframework-run-pom:0.0.1/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.1/checkerframework-run-pom/pom.xml)
 
 
 ### [0.0.0] - 2022-01-10
 
 Provide `@ms` annotation that means milliseconds for the checkerframework.
 
-The parent POM is [commons:0.0.4/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0/4/java/pom.xml)
+The parent POM is [commons:0.0.4/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.4/pom.xml)
 
 
 
@@ -42,7 +47,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.1...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.2...master
+
+[c-0.0.2]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.1...checkerfamework-units/0.0.2
+[0.0.2]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0.2
 
 [c-0.0.1]: https://github.com/evoja/java-commons/compare/checkerfamework-units/0.0.0...checkerfamework-units/0.0.1
 [0.0.1]: https://github.com/evoja/java-commons/tree/checkerfamework-units/0.0.1

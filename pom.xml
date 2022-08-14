@@ -9,7 +9,7 @@
 
 	<groupId>net.evoja.commons</groupId>
 	<artifactId>commons</artifactId>
-	<version>0.0.6-lic-deps</version>
+	<version>0.0.7</version>
 	<packaging>pom</packaging>
 
 	<modules>

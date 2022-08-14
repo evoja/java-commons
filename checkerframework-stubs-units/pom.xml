@@ -9,11 +9,11 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.7</version>
 	</parent>
 
 	<artifactId>checkerframework-stubs-units</artifactId>
-	<version>0.0.0</version>
+	<version>0.0.0-unreleased</version>
 
 	<repositories>
 		<repository>

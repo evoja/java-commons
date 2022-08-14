@@ -15,7 +15,7 @@
 
 
 ## v0.0
-#### [Unreleased][unreleased]
+### [0.0.7] - [2022-08-14][c-0.0.7]
 ##### Added
 * [MIT License](./LICENSE)
 * [README.md](./README.md) that describes purposes of the project and its submodules
@@ -69,6 +69,7 @@ Collection of following sub-modules and their parent:
 
 Also look at individual module changelogs:
 
+* [checkerframework-run-pom](checkerframework-run-pom/CHANGELOG.md)
 * [checkerframework-stubs-nullness](checkerframework-stubs-nullness/CHANGELOG.md)
 * [checkerframework-stubs-purity](checkerframework-stubs-purity/CHANGELOG.md)
 * [checkerframework-stubs-units](checkerframework-stubs-units/CHANGELOG.md)
@@ -85,7 +86,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 
 [The root CHANGELOG](/CHANGELOG.md)
 
-[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0.6...master
+[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0.7...master
+
+[c-0.0.7]: https://github.com/evoja/java-commons/compare/commons/0.0.6...commons/0.0.7
+[0.0.7]: https://github.com/evoja/java-commons/tree/commons/0.0.7
 
 [c-0.0.6]: https://github.com/evoja/java-commons/compare/commons/0.0.5...commons/0.0.6
 [0.0.6]: https://github.com/evoja/java-commons/tree/commons/0.0.6
