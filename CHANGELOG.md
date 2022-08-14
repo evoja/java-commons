@@ -24,9 +24,10 @@
 
 #### Changed
 * Upgrade `maven-compiler-plugin` dependency to `3.10.1`
-* Upgrade `maven-dependency-plugin` dependency to `3.3.0`
-* Upgrade `maven-surefire-plugin` dependency to `3.0.0-M7`
 * Upgrade `maven-install-plugin` dependency to `3.0.1`
+* Upgrade `maven-dependency-plugin` dependency to `3.3.0`
+* Upgrade `maven-deploy-plugin` dependency to `3.0.0`
+* Upgrade `maven-surefire-plugin` dependency to `3.0.0-M7`
 * Upgrade `junit-jupiter` dependency to `5.9.0`
 
 
