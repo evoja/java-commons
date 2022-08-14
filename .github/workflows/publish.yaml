@@ -16,7 +16,7 @@ jobs:
 
   attributes:
     name: Check module name and version
-    uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@17a232a34055c6bbe9a62d698d55ef931126e7d8 # same as @wf/mvn-attributes/00
+    uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@a0f80e47c00ac2d5426b618ccf4f774ecc25cd7d # same as @wf/mvn-attributes/04
 
   editorconfig-checker:
     name: ec
