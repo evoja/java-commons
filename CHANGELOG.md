@@ -3,6 +3,7 @@
 <!---
 #### [Unreleased][unreleased]
 ##### Added
+* [README.md](./README.md) that describes purposes of the project and its submodules
 ##### Changed
 ##### Deprecated
 ##### Removed
