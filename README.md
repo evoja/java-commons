@@ -3,7 +3,7 @@
 ### The root
 
 |artifact| packaging |
-|---|---|---|
+|---|---|
 |net.evoja.commons:commons | pom |
 
 It's the top parent for my POM modules.
