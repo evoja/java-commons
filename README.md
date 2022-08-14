@@ -21,6 +21,8 @@ Declares common plugins such as:
 * maven-surefire-plugin
 * maven-install-plugin
 * maven-deploy-plugin
+* Dependencies license checking: licensescan-maven-plugin
+* License reporting: license-maven-plugin
 
 Inherited by:
 * checkerframework-run-pom
@@ -29,7 +31,6 @@ Used by:
 * checkerframework-stubs-nullness
 * checkerframework-stubs-purity
 * checkerframework-stubs-units
-* checkerframework-units
 
 
 
@@ -58,7 +59,7 @@ Inherited by:
 *
 
 Used by:
-*
+* checkerframework-units
 
 
 ### checkerframework-stubs-nullness
@@ -120,4 +121,4 @@ Used by:
 
 |artifact| packaging | parent |
 |---|---|---|
-|net.evoja.commons:checkerframework-units | jar | net.evoja.commons:commons |
+|net.evoja.commons:checkerframework-units | jar | net.evoja.commons:checkerframework-run-pom |

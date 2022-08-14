@@ -10,7 +10,8 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.6</version>
+		<version>0.0.6-lic-deps</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>

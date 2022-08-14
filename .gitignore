@@ -1,5 +1,6 @@
 /java/.editorconfig
 /*/target
+/target
 /ignore
 
 node_modules

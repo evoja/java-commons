@@ -45,6 +45,14 @@
 		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
 	<dependencies>
 		<!--
 			Scopes:
@@ -104,6 +112,54 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>3.0.0-M2</version>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>2.0.0</version>
+			</plugin>
+			<plugin>
+				<groupId>com.github.carlomorelli</groupId>
+				<artifactId>licensescan-maven-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
 		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>third-party-report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>com.github.carlomorelli</groupId>
+					<artifactId>licensescan-maven-plugin</artifactId>
+					<configuration>
+						<printLicenses>true</printLicenses>
+						<blacklistedLicenses>
+<!--							<license>GNU General Public License, v2.0</license>-->
+<!--							<license>GNU General Public License, v3.0</license>-->
+							<license>regex:.*GNU.*</license>
+						</blacklistedLicenses>
+						<failBuildOnBlacklisted>true</failBuildOnBlacklisted>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>compile</phase> <!-- choose the most relevant goal for your pipeline, e.g. 'compile', 'test' or 'deploy' -->
+							<goals>
+								<goal>audit</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

@@ -3,7 +3,6 @@
 <!---
 #### [Unreleased][unreleased]
 ##### Added
-* [README.md](./README.md) that describes purposes of the project and its submodules
 ##### Changed
 ##### Deprecated
 ##### Removed
@@ -19,6 +18,9 @@
 #### [Unreleased][unreleased]
 ##### Added
 * MIT License
+* [README.md](./README.md) that describes purposes of the project and its submodules
+* Dependencies license checking: licensescan-maven-plugin
+* License reporting: license-maven-plugin
 
 #### Changed
 * Upgrade `maven-compiler-plugin` dependency to `3.9.0`
