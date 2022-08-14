@@ -19,7 +19,7 @@
 * The parent POM to [commons:0.0.7/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.7/pom.xml),
 	which supports dependencies license checking and reporting.
 * Upgrade `checkerframework.version` to `3.24.0`
-* Bump [checkerframework-units](checkerframework-units/) from 0.0.1 to 0.0.2
+* Bump [checkerframework-units](../checkerframework-units/) from 0.0.1 to 0.0.2
 
 
 ### [0.0.1] - [2022-01-15][c-0.0.1]
