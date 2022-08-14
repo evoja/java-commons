@@ -17,13 +17,17 @@
 ## v0.0
 #### [Unreleased][unreleased]
 ##### Added
-* MIT License
+* [MIT License](./LICENSE)
 * [README.md](./README.md) that describes purposes of the project and its submodules
-* Dependencies license checking: licensescan-maven-plugin
-* License reporting: license-maven-plugin
+* Dependencies license checking: `licensescan-maven-plugin:2.1`
+* License reporting: `license-maven-plugin:2.0.0`
 
 #### Changed
-* Upgrade `maven-compiler-plugin` dependency to `3.9.0`
+* Upgrade `maven-compiler-plugin` dependency to `3.10.1`
+* Upgrade `maven-dependency-plugin` dependency to `3.3.0`
+* Upgrade `maven-surefire-plugin` dependency to `3.0.0-M7`
+* Upgrade `maven-install-plugin` dependency to `3.0.1`
+* Upgrade `junit-jupiter` dependency to `5.9.0`
 
 
 ### [0.0.6] - [2022-01-14][c-0.0.6]

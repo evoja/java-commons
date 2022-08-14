@@ -14,6 +14,10 @@
 <!--- ### [0.0.1] - [2022-01-04][c-0.0.1] --->
 
 ## v0.0
+### [Unreleased][unreleased]
+
+##### Changed
+* The parent POM to [commons:0.0.?/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.?/pom.xml)
 
 ### [0.0.0] - 2022-01-10
 
