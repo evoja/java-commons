@@ -44,7 +44,7 @@ jobs:
 
       - name: Use cache
         id: cache
-        uses: actions/cache@v3.0.8 # originally pointed to c64c572235d810460d0d6876e9c705ad5002b353
+        uses: actions/cache@v3.0.9 # originally pointed to c64c572235d810460d0d6876e9c705ad5002b353
         with:
           # add `run_attempt` in order to never use cached key
           key: checkingstamps-check-${{github.run_id}}-${{github.run_attempt}}
@@ -97,7 +97,7 @@ jobs:
 
       - name: Use cache for checking stamps
         id: cache-checkingstamps
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v3.0.9
         with:
           key: checkingstamps-all-${{needs.checkingstamps.outputs.javahash}}
           restore-keys: |
@@ -108,7 +108,7 @@ jobs:
 
       - name: Use cache for maven dependencies
         id: cache
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v3.0.9
         with:
           key: mvndeps-all-${{ hashFiles(env.poms_tpl) }}-${{ hashFiles(env.pom_tpl)}}
           restore-keys: |
