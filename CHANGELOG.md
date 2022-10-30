@@ -15,9 +15,11 @@
 
 
 ## v0.0
-#### [Unreleased][unreleased]
+### [0.0.8] - [2022-10-30][c-0.0.8]
 ##### Changed
 * Change compile target and source to `11`
+* Upgrade `junit-jupiter` dependency to `5.9.1`
+* Upgrade `licensescan-maven-plugin` to `2.2`
 
 ### [0.0.7] - [2022-08-14][c-0.0.7]
 ##### Added
@@ -91,7 +93,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 
 [The root CHANGELOG](/CHANGELOG.md)
 
-[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0.7...master
+[unreleased]: https://github.com/evoja/java-commons/compare/commons/0.0.8...master
+
+[c-0.0.8]: https://github.com/evoja/java-commons/compare/commons/0.0.7...commons/0.0.8
+[0.0.8]: https://github.com/evoja/java-commons/tree/commons/0.0.8
 
 [c-0.0.7]: https://github.com/evoja/java-commons/compare/commons/0.0.6...commons/0.0.7
 [0.0.7]: https://github.com/evoja/java-commons/tree/commons/0.0.7

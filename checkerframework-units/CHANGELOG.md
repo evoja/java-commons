@@ -16,10 +16,10 @@
 
 
 ## v0.0
-#### [Unreleased][unreleased]
+### [0.0.3] - [2022-10-30][c-0.0.3]
 ##### Changed
-The parent POM to [checkerframework-run-pom:0.0.?/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.?/checkerframework-run-pom/pom.xml),
-changes compilation source and target to JDK11.
+The parent POM to [checkerframework-run-pom:0.0.3/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.3/checkerframework-run-pom/pom.xml),
+which changes compilation source and target to JDK11.
 
 
 ### [0.0.2] - [2022-08-14][c-0.0.2]
@@ -52,7 +52,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-units/0.0.2...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-units/0.0.3...master
+
+[c-0.0.3]: https://github.com/evoja/java-commons/compare/checkerframework-units/0.0.2...checkerframework-units/0.0.3
+[0.0.3]: https://github.com/evoja/java-commons/tree/checkerframework-units/0.0.3
 
 [c-0.0.2]: https://github.com/evoja/java-commons/compare/checkerframework-units/0.0.1...checkerframework-units/0.0.2
 [0.0.2]: https://github.com/evoja/java-commons/tree/checkerframework-units/0.0.2

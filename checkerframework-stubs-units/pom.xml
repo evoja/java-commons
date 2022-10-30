@@ -9,12 +9,12 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.7-unreleased</version>
+		<version>0.0.8</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-stubs-units</artifactId>
-	<version>0.0.0-unreleased</version>
+	<version>0.0.1</version>
 
 	<repositories>
 		<repository>
