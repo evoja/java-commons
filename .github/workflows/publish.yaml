@@ -10,6 +10,7 @@ on:
       - checkerframework-units/**
 
 permissions:
+  contents: read
   packages: none
 
 jobs:
@@ -18,6 +19,8 @@ jobs:
     name: Check module name and version
     uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@dep2
     # uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@e900f0d9082b75ee5659c5ca55c32e68cbcc91d8 # same as @wf/mvn-attributes/05
+    with:
+      java_version: '11'
 
   editorconfig-checker:
     name: ec
@@ -28,13 +31,18 @@ jobs:
     name: caj
     needs: attributes
     uses: evoja/java-commons/.github/workflows/ca-java.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/ca-java/03
+    with:
+      java_version: '11'
 
   deploy-java:
     name: dj
     needs: [attributes, editorconfig-checker, ca-java]
-    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@e900f0d9082b75ee5659c5ca55c32e68cbcc91d8 # same as @wf/deploy-java/03
+    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@dep2
+#    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@e900f0d9082b75ee5659c5ca55c32e68cbcc91d8 # same as @wf/deploy-java/03
     with:
       path_to_module: ${{needs.attributes.outputs.path}}
+      java_version: '11'
     permissions:
+      contents: read
       packages: write
 
