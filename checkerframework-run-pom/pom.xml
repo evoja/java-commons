@@ -10,12 +10,12 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>commons</artifactId>
-		<version>0.0.7</version>
+		<version>0.0.7-unreleased</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.2-unreleased</version>
 	<packaging>pom</packaging>
 
 	<properties>

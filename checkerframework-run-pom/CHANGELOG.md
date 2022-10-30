@@ -14,6 +14,11 @@
 
 ## v0.0
 
+#### [Unreleased][unreleased]
+##### Changed
+* The parent POM to [commons:0.0.?/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.?/pom.xml),
+	which changes compilation source and target to JDK11
+
 ### [0.0.2] - [2022-08-14][c-0.0.2]
 ##### Changed
 * The parent POM to [commons:0.0.7/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.7/pom.xml),

@@ -15,6 +15,10 @@
 
 
 ## v0.0
+#### [Unreleased][unreleased]
+##### Changed
+* Change compile target and source to `11`
+
 ### [0.0.7] - [2022-08-14][c-0.0.7]
 ##### Added
 * [MIT License](./LICENSE)
@@ -22,7 +26,7 @@
 * Dependencies license checking: `licensescan-maven-plugin:2.1`
 * License reporting: `license-maven-plugin:2.0.0`
 
-#### Changed
+##### Changed
 * Upgrade `maven-compiler-plugin` dependency to `3.10.1`
 * Upgrade `maven-install-plugin` dependency to `3.0.1`
 * Upgrade `maven-dependency-plugin` dependency to `3.3.0`

@@ -9,7 +9,7 @@
 
 	<groupId>net.evoja.commons</groupId>
 	<artifactId>commons</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.7-unreleased</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -23,8 +23,8 @@
 	<properties>
 		<evj.commons.group>net.evoja.commons</evj.commons.group>
 
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 	</properties>
