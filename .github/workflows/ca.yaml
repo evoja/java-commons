@@ -6,14 +6,16 @@ on:
       - '!dependabot/**'
 
 permissions:
-  packages: none
+  contents: read
 
 jobs:
 
   editorconfig-checker:
     name: ec
-    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@760f418e9159427adcf61cc296ca89b613429597 # same as @wf/editorconfig-checker/01
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/editorconfig-checker/04
 
   ca-java:
     name: caj
-    uses: evoja/java-commons/.github/workflows/ca-java.yaml@93521b41fb356a7cdd7aeb16bf7eaf0222edfa1a # same as @wf/ca-java/00
+    uses: evoja/java-commons/.github/workflows/ca-java.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/ca-java/03
+    with:
+      java_version: '11'
