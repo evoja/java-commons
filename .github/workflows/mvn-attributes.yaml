@@ -61,7 +61,7 @@ jobs:
 
       - name: Auth to GitHub Maven
         env:
-          MVN_SETTIGNS: ${{inputs.path_to_mvn_settings}}
+          MVN_SETTINGS: ${{inputs.path_to_mvn_settings}}
         run: |
           if [ -f "$MVN_SETTINGS" ]; then
             cp "$MVN_SETTINGS" ~/.m2/settings.xml
