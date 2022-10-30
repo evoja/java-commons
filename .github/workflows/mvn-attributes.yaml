@@ -45,7 +45,7 @@ jobs:
           fi;
           echo "PROJ_PATH=$PROJ_PATH"
           [ -d "$PROJ_PATH" ]
-          echo "::set-output name=path::$PROJ_PATH"
+          echo "path=$PROJ_PATH" >> $GITHUB_OUTPUT
 
       - uses: actions/setup-java@v3.6.0
         with:

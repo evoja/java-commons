@@ -44,7 +44,7 @@ jobs:
         env:
           JAVA_HASH: ${{ hashFiles(env.src_tpl, env.poms_tpl, env.pom_tpl) }}
         run: |
-          echo "::set-output name=javahash::$JAVA_HASH"
+          echo "javahash=$JAVA_HASH" >> $GITHUB_OUTPUT
 
       - name: Use cache
         id: cache
@@ -65,7 +65,7 @@ jobs:
           JAVA_HASH: ${{steps.javahash.outputs.javahash}}
         run: |
           if [ -f ".github/.evj-checkingstamps/all-$JAVA_HASH.txt" ]; then
-            echo "::set-output name=checked::1"
+            echo "checked=1" >> $GITHUB_OUTPUT
           fi;
     outputs:
       checked: ${{steps.checkstamps.outputs.checked}}
