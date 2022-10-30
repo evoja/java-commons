@@ -2,6 +2,10 @@ name: Check module name and version
 on:
   workflow_call:
     inputs:
+      java_version:
+        description: Version of JDK to use
+        default: '17'
+        type: string
       path_to_java:
         description: A path where the java project is located
         default: '.'
@@ -50,7 +54,7 @@ jobs:
       - uses: actions/setup-java@v3.6.0
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{inputs.java_version}}
 
       - name: Auth to GitHub Maven
         env:
