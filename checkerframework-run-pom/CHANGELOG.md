@@ -19,6 +19,9 @@
 * The parent POM to [commons:0.0.8/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.8/pom.xml),
 	which changes compilation source and target to JDK11
 * Upgrade `checkerframework.version` to `3.26.0`
+* Bump [checkerframework-stubs-nullness](../checkerframework-stubs-nullness/) from 0.0.0 to 0.0.1
+* Bump [checkerframework-stubs-purity](../checkerframework-stubs-purity/) from 0.0.0 to 0.0.1
+* Bump [checkerframework-stubs-units](../checkerframework-stubs-units/) from 0.0.0 to 0.0.1
 * Bump [checkerframework-units](../checkerframework-units/) from 0.0.2 to 0.0.3
 
 ### [0.0.2] - [2022-08-14][c-0.0.2]
