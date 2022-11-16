@@ -137,6 +137,11 @@ jobs:
         run: |
           if [ -f "$MVN_SETTINGS" ]; then
             cp "$MVN_SETTINGS" ~/.m2/settings.xml
+            echo "::group::copied ~/.m2/settings.xml"
+            cat ~/.m2/settings.xml
+            echo "::endgroup::"
+          else
+            echo "No mvn settings. Nothing to copy."
           fi
 
       - name: Build all java subprojects
@@ -145,9 +150,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
         run: |
-          echo "== auth info =="
+          echo "::group::~/.m2/settings.xml"
           cat ~/.m2/settings.xml
-          echo "==============="
+          echo "::endgroup::"
+
           cd "$PROJ"
           mvn --batch-mode install
 
