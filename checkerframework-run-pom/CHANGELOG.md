@@ -14,6 +14,13 @@
 
 ## v0.0
 
+### [0.0.4] - [2022-11-16][c-0.0.4]
+##### Changed
+* Configure `markersDirectory` in order to not conflict
+with `jira-maven-plugin:copy-bundled-dependencies`
+* Upgrade `checkerframework.version` from `3.26.0` to `3.27.0`
+
+
 ### [0.0.3] - [2022-10-30][c-0.0.3]
 ##### Changed
 * The parent POM to [commons:0.0.8/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.8/pom.xml),
@@ -23,6 +30,7 @@
 * Bump [checkerframework-stubs-purity](../checkerframework-stubs-purity/) from 0.0.0 to 0.0.1
 * Bump [checkerframework-stubs-units](../checkerframework-stubs-units/) from 0.0.0 to 0.0.1
 * Bump [checkerframework-units](../checkerframework-units/) from 0.0.2 to 0.0.3
+
 
 ### [0.0.2] - [2022-08-14][c-0.0.2]
 ##### Changed
@@ -58,7 +66,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.3...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.4...master
+
+[c-0.0.4]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.3...checkerframework-run-pom/0.0.4
+[0.0.4]: https://github.com/evoja/java-commons/tree/checkerframework-run-pom/0.0.4
 
 [c-0.0.3]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.2...checkerframework-run-pom/0.0.3
 [0.0.3]: https://github.com/evoja/java-commons/tree/checkerframework-run-pom/0.0.3

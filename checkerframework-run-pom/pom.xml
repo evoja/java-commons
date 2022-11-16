@@ -15,7 +15,7 @@
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.3-unreleased</version>
+	<version>0.0.4</version>
 	<packaging>pom</packaging>
 
 	<properties>
