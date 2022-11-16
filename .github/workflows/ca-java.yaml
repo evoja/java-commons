@@ -142,6 +142,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GHCR_R_PAT: ${{ secrets.GHCR_R_PAT }}
         run: |
+          echo "== auth info =="
+          cat ~/.m2/settings.xml
+          echo "==============="
           cd "$PROJ"
           mvn --batch-mode install
 
