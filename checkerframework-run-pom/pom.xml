@@ -15,7 +15,7 @@
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.3-unreleased</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -96,6 +96,7 @@
 								<overWriteIfNewer>true</overWriteIfNewer>
 								<overWriteReleases>true</overWriteReleases>
 								<overWriteSnapshots>true</overWriteSnapshots>
+								<markersDirectory>${project.build.directory}/dependency-maven-plugin-markers-checkerframework-stubs</markersDirectory>
 							</configuration>
 						</execution>
 					</executions>
