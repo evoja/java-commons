@@ -15,6 +15,11 @@
 
 
 ## v0.0
+
+#### [Unreleased][unreleased]
+##### Changed
+* Upgrade `maven-install-plugin` dependency to `3.1.0`
+
 ### [0.0.8] - [2022-10-30][c-0.0.8]
 ##### Changed
 * Change compile target and source to `11`
