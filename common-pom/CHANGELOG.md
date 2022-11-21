@@ -25,11 +25,6 @@ Moved from `net.evoja.commons:commons`.
 Initialized with:
 
 * Plugins
-	* `maven-clean-plugin:3.2.0`
-	* `maven-compiler-plugin:3.10.1`
-	* `maven-dependency-plugin:3.3.0`
-	* `maven-deploy-plugin:3.0.0`
-	* `maven-install-plugin:3.1.0`
 	* `maven-surefire-plugin:3.0.0-M7`
 
 * Managed custom configurations of

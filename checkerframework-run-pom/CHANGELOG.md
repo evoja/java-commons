@@ -16,8 +16,13 @@
 
 #### [Unreleased][unreleased]
 ##### Changed
-* The parent POM to [common-pom:0.0.0/pom.xml](https://github.com/evoja/java-commons/blob/common-pom/0.0.0/pom.xml)
-	that is a pure POM parent, which does not combine other modules
+The parent POM to [common-pom:0.0.0/pom.xml](https://github.com/evoja/java-commons/blob/common-pom/0.0.0/pom.xml)
+which:
+* is a pure POM parent that does not combine other modules
+* does not specify version of `maven-compiler-plugin`, `maven-dependency-plugin`,
+	`maven-deploy-plugin`, `maven-install-plugin` anymore
+
+Start managing version of `maven-compiler-plugin:3.10.1`
 
 ### [0.0.4] - [2022-11-16][c-0.0.4]
 ##### Changed
