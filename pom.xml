@@ -47,6 +47,10 @@
 
 	<pluginRepositories>
 		<pluginRepository>
+			<!--
+				This is for com.github.carlomorelli:licensescan-maven-plugin
+				https://github.com/carlomorelli/licensescan-maven-plugin
+			-->
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</pluginRepository>
