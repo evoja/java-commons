@@ -18,7 +18,7 @@
 
 #### [Unreleased][unreleased]
 ##### Changed
-* Upgrade `maven-install-plugin` dependency to `3.1.0`
+* Stop being the parent pom for its modules
 
 ### [0.0.8] - [2022-10-30][c-0.0.8]
 ##### Changed
