@@ -5,7 +5,7 @@
 	net.evoja.commons:commons | pom
 
 It's the top parent for my POM modules:
-* it defines _target_ and _source_ Java version and the souce encoding (UTF-8).
+* it defines _target_ and _source_ Java version and the source encoding (UTF-8).
 * Declares common dependencies such as:
 	* unit testing engine (junit-jupiter)
 * Declares common plugins such as:
