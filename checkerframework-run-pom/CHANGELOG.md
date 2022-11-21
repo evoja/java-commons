@@ -14,7 +14,7 @@
 
 ## v0.0
 
-#### [Unreleased][unreleased]
+### [0.0.5] - [2022-11-21][c-0.0.5]
 ##### Changed
 The parent POM to [common-pom:0.0.0/pom.xml](https://github.com/evoja/java-commons/blob/common-pom/0.0.0/pom.xml)
 which:
@@ -76,7 +76,10 @@ Changelog file follows [this convention](https://keepachangelog.com/)
 [The root CHANGELOG](/CHANGELOG.md)
 
 
-[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.4...master
+[unreleased]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.5...master
+
+[c-0.0.5]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.4...checkerframework-run-pom/0.0.5
+[0.0.5]: https://github.com/evoja/java-commons/tree/checkerframework-run-pom/0.0.5
 
 [c-0.0.4]: https://github.com/evoja/java-commons/compare/checkerframework-run-pom/0.0.3...checkerframework-run-pom/0.0.4
 [0.0.4]: https://github.com/evoja/java-commons/tree/checkerframework-run-pom/0.0.4

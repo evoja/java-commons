@@ -2,7 +2,7 @@ name: Deploy to registry
 on:
   push:
     tags:
-      - commons/**
+      - common-pom/**
       - checkerframework-run-pom/**
       - checkerframework-stubs-nullness/**
       - checkerframework-stubs-purity/**

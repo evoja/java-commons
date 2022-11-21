@@ -17,7 +17,7 @@
 
 ## v0.0
 
-### [0.0.0] - 2022-??-??
+### [0.0.0] - 2022-11-21
 
 The top parent of the library that includes distribution settings and group id.
 Moved from `net.evoja.commons:commons`.
@@ -43,3 +43,12 @@ Initialized with:
 Changelog file follows [this convention](https://keepachangelog.com/)
 
 [The root CHANGELOG](/CHANGELOG.md)
+
+
+
+[unreleased]: https://github.com/evoja/java-commons/compare/common-pom/0.0.0...master
+
+[c-0.0.1]: https://github.com/evoja/java-commons/compare/common-pom/0.0.0...common-pom/0.0.1
+[0.0.1]: https://github.com/evoja/java-commons/tree/common-pom/0.0.1
+
+[0.0.0]: https://github.com/evoja/java-commons/tree/common-pom/0.0.0

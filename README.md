@@ -1,9 +1,8 @@
 # Evoja Java commons
 
-### pom
-### The root
+### common-pom
 
-	net.evoja.commons:pom | pom
+	net.evoja.commons:common-pom | pom
 
 It's the top parent for my POM modules:
 * it defines _target_ and _source_ Java version and the source encoding (UTF-8).

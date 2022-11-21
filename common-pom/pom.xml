@@ -9,7 +9,7 @@
 
 	<groupId>net.evoja.commons</groupId>
 	<artifactId>common-pom</artifactId>
-	<version>0.0.0-initial</version>
+	<version>0.0.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -21,7 +21,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>evoja-java-commons</id>
+			<id>github</id>
 			<name>GitHub Evoja Commons</name>
 			<url>https://maven.pkg.github.com/evoja/java-commons</url>
 		</repository>

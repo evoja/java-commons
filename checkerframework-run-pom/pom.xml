@@ -10,24 +10,17 @@
 	<parent>
 		<groupId>net.evoja.commons</groupId>
 		<artifactId>common-pom</artifactId>
-		<version>0.0.0-initial</version>
+		<version>0.0.0</version>
 		<relativePath>../common-pom/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>checkerframework-run-pom</artifactId>
-	<version>0.0.4-unreleased</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<checkerframework.version>3.27.0</checkerframework.version>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>github</id>
-			<url>https://maven.pkg.github.com/evoja/java-commons</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
