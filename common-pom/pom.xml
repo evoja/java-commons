@@ -8,42 +8,24 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.evoja.commons</groupId>
-	<artifactId>commons</artifactId>
-	<version>0.0.8-unreleased</version>
+	<artifactId>common-pom</artifactId>
+	<version>0.0.0-initial</version>
 	<packaging>pom</packaging>
-
-	<modules>
-		<module>checkerframework-run-pom</module>
-		<module>checkerframework-stubs-nullness</module>
-		<module>checkerframework-stubs-purity</module>
-		<module>checkerframework-stubs-units</module>
-		<module>checkerframework-units</module>
-	</modules>
 
 	<properties>
 		<evj.commons.group>net.evoja.commons</evj.commons.group>
-
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 	</properties>
 
 	<distributionManagement>
 		<repository>
-			<id>github</id>
+			<id>evoja-java-commons</id>
 			<name>GitHub Evoja Commons</name>
 			<url>https://maven.pkg.github.com/evoja/java-commons</url>
 		</repository>
 	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>github</id>
-			<name>GitHub Evoja Commons</name>
-			<url>https://maven.pkg.github.com/evoja/java-commons</url>
-		</repository>
-	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -98,6 +80,11 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.10.1</version>
 			</plugin>
@@ -116,16 +103,6 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>2.0.0</version>
-			</plugin>
-			<plugin>
-				<groupId>com.github.carlomorelli</groupId>
-				<artifactId>licensescan-maven-plugin</artifactId>
-				<version>2.2</version>
-			</plugin>
 		</plugins>
 
 		<pluginManagement>
@@ -133,6 +110,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>license-maven-plugin</artifactId>
+					<version>2.0.0</version>
 					<executions>
 						<execution>
 							<phase>install</phase>
@@ -145,6 +123,7 @@
 				<plugin>
 					<groupId>com.github.carlomorelli</groupId>
 					<artifactId>licensescan-maven-plugin</artifactId>
+					<version>2.2</version>
 					<configuration>
 						<printLicenses>true</printLicenses>
 						<blacklistedLicenses>

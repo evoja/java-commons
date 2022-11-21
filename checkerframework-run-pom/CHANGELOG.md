@@ -14,6 +14,11 @@
 
 ## v0.0
 
+#### [Unreleased][unreleased]
+##### Changed
+* The parent POM to [common-pom:0.0.0/pom.xml](https://github.com/evoja/java-commons/blob/common-pom/0.0.0/pom.xml)
+	that is a pure POM parent, which does not combine other modules
+
 ### [0.0.4] - [2022-11-16][c-0.0.4]
 ##### Changed
 * Configure `markersDirectory` in order to not conflict

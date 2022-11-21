@@ -1,8 +1,9 @@
 # Evoja Java commons
 
+### pom
 ### The root
 
-	net.evoja.commons:commons | pom
+	net.evoja.commons:pom | pom
 
 It's the top parent for my POM modules:
 * it defines _target_ and _source_ Java version and the source encoding (UTF-8).
@@ -89,3 +90,11 @@ and distributes is as `*.astub` files.
 Currently, it only declares:
 
 * `java.lang.System.currentTimeMillis()`
+
+### The root
+
+	net.evoja.commons:commons | pom
+
+It used to be a parent pom for other projects.
+Not its role has been moved to `common-pom`.
+I don't distribute the root project anymore.

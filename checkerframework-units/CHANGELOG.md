@@ -16,6 +16,10 @@
 
 
 ## v0.0
+#### [Unreleased][unreleased]
+##### Changed
+* The parent POM to [checkerframework-run-pom:0.0.?/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.?/checkerframework-run-pom/pom.xml),
+
 ### [0.0.3] - [2022-10-30][c-0.0.3]
 ##### Changed
 The parent POM to [checkerframework-run-pom:0.0.3/pom.xml](https://github.com/evoja/java-commons/blob/checkerframework-run-pom/0.0.3/checkerframework-run-pom/pom.xml),

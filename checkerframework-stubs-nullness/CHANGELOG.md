@@ -13,6 +13,11 @@
 
 
 ## v0.0
+#### [Unreleased][unreleased]
+##### Changed
+* The parent POM to [common-pom:0.0.0/pom.xml](https://github.com/evoja/java-commons/blob/common-pom/0.0.0/pom.xml)
+	that is a pure POM parent, which does not combine other modules
+
 ### [0.0.1] - [2022-10-30][c-0.0.1]
 ##### Changed
 The parent POM to [commons:0.0.8/pom.xml](https://github.com/evoja/java-commons/blob/commons/0.0.8/pom.xml)
