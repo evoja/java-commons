@@ -19,7 +19,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<checkerframework.version>3.30.0</checkerframework.version>
+		<checkerframework.version>3.31.0</checkerframework.version>
 	</properties>
 
 	<dependencies>
