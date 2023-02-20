@@ -17,26 +17,26 @@ jobs:
 
   attributes:
     name: Check module name and version
-    uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@64285fa450c750eaa590211b3019240b47047362 # same as @wf/mvn-attributes/05
+    uses: evoja/java-commons/.github/workflows/mvn-attributes.yaml@8bcc189ffa08b29497fcf64f486e27acc89e90ee # same as @wf/mvn-attributes/05
     with:
       java_version: '11'
 
   editorconfig-checker:
     name: ec
     needs: attributes
-    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/editorconfig-checker/04
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@8bcc189ffa08b29497fcf64f486e27acc89e90ee # same as @wf/editorconfig-checker/04
 
   ca-java:
     name: caj
     needs: attributes
-    uses: evoja/java-commons/.github/workflows/ca-java.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/ca-java/03
+    uses: evoja/java-commons/.github/workflows/ca-java.yaml@8bcc189ffa08b29497fcf64f486e27acc89e90ee # same as @wf/ca-java/03
     with:
       java_version: '11'
 
   deploy-java:
     name: dj
     needs: [attributes, editorconfig-checker, ca-java]
-    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@5c0a8b8bcbbf11ccb40e3e1e584d96f2e9d1a1db # same as @wf/deploy-java/03
+    uses: evoja/java-commons/.github/workflows/deploy-java.yaml@8bcc189ffa08b29497fcf64f486e27acc89e90ee # same as @wf/deploy-java/03
     with:
       path_to_module: ${{needs.attributes.outputs.path}}
       java_version: '11'
