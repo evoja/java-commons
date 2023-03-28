@@ -12,7 +12,7 @@ jobs:
 
   editorconfig-checker:
     name: ec
-    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@5c9da1c159dc3a0dc1d4e07a2d3ddc28b8c28ed9 # same as @wf/editorconfig-checker/04
+    uses: evoja/java-commons/.github/workflows/editorconfig-checker.yaml@MTD-60
 
   ca-java:
     name: caj
