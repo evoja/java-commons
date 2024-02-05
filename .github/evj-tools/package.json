@@ -4,6 +4,6 @@
 		"check-editorconfig": "editorconfig-checker -exclude '\\.iml$|/(node_modules|target|.idea|.git)/' ../.."
 	},
 	"devDependencies": {
-		"editorconfig-checker": "5.1.2"
+		"editorconfig-checker": "5.1.3"
 	}
 }
